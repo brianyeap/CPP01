@@ -6,7 +6,7 @@
 /*   By: brian <brian@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 21:30:30 by brian             #+#    #+#             */
-/*   Updated: 2025/05/29 16:54:35 by brian            ###   ########.fr       */
+/*   Updated: 2025/06/19 02:30:06 by brian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,22 @@ typedef std::string t_string;
 
 static int open_files(t_string inputName, t_string outputName, std::ifstream *inputFile, std::ofstream *outputFile)
 {
-	(*inputFile).open(inputName, std::fstream::in);
-	(*outputFile).open(outputName, std::fstream::out);
-	if (!inputFile || !outputFile)
+	inputFile->open(inputName.c_str(), std::ios::in);
+	if (!inputFile->is_open())
 	{
-        std::cerr << "Failed to open files!" << std::endl;
-		(*inputFile).close();
-		(*outputFile).close();
-        return (1);
-    }
-	return (0);
+		std::cerr << "Failed to open input file!" << std::endl;
+		return 1;
+	}
+
+	outputFile->open(outputName.c_str(), std::ios::out);
+	if (!outputFile->is_open())
+	{
+		std::cerr << "Failed to open output file!" << std::endl;
+		inputFile->close();
+		return 1;
+	}
+
+	return 0;
 }
 
 static void read_and_replace(char **argv, std::ifstream *inputFile, std::ofstream *outputFile)

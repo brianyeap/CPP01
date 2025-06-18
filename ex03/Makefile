@@ -6,7 +6,7 @@
 #    By: brian <brian@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/26 16:58:24 by brian             #+#    #+#              #
-#    Updated: 2025/05/26 18:44:37 by brian            ###   ########.fr        #
+#    Updated: 2025/06/19 02:27:33 by brian            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 CFILES = $(wildcard src/*.cpp)
 OFILES = $(CFILES:src/%.cpp=%.o)
 
-Compiler = c++
+Compiler = g++
 Flags = -Wall -Wextra -Werror -std=c++98
 INCLUDES = -Iincludes
 
