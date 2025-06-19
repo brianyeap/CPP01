@@ -16,7 +16,7 @@ int	main(void) {
 	Zombie	*horde;
 	int		nbZombies;
 
-	nbZombies = 10;
+	nbZombies = 5;
 	horde = zombieHorde(nbZombies, "Zombie");
 	if (!horde)
 		return (1);

@@ -16,6 +16,7 @@ int main() {
   Zombie *z;
 
   z = newZombie("Zombie");
+  z-> announce();
   randomChump("ligma");
   delete z;
   return (0);
